@@ -1,0 +1,13 @@
+# Ignore build files and assets from language stats
+dist/* linguist-vendored
+build/* linguist-vendored
+out/* linguist-vendored
+public/* linguist-vendored
+*.html linguist-vendored
+*.css linguist-vendored
+
+# Force React files to be counted as JavaScript
+*.js linguist-language=JavaScript
+*.jsx linguist-language=JavaScript
+*.ts linguist-language=TypeScript
+*.tsx linguist-language=TypeScript
