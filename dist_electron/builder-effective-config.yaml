@@ -1,0 +1,19 @@
+directories:
+  output: dist_electron
+  buildResources: build
+appId: com.fuel.manager
+productName: Fuel Manager
+asar: false
+files:
+  - filter:
+      - dist/**/*
+      - electron/**/*
+      - package.json
+win:
+  target: nsis
+  icon: public/icon.ico
+nsis:
+  oneClick: false
+  allowToChangeInstallationDirectory: true
+  createDesktopShortcut: true
+electronVersion: 34.5.8

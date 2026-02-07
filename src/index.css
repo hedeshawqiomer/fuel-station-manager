@@ -1,0 +1,74 @@
+@import url("https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100..900&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* --- 1. DEFINE YOUR THEME COLORS HERE --- */
+@layer base {
+  :root {
+    --background: 10 10 10; /* #0a0a0a */
+    --surface: 21 21 21; /* #151515 */
+    --surface-hover: 26 26 26; /* #1a1a1a */
+    --border: 38 38 38; /* #262626 */
+    --primary: 182 255 0; /* #b6ff00 (Neon Green) */
+    --text-main: 255 255 255;
+    --text-muted: 156 163 175;
+  }
+
+  body {
+    background-color: rgb(var(--background));
+    color: rgb(var(--text-main));
+    font-family: "Vazirmatn", sans-serif;
+    @apply antialiased overflow-hidden;
+  }
+
+  /* Global Input Style */
+  input,
+  select,
+  textarea {
+    @apply w-full bg-[#1a1a1a] border border-[#262626] rounded-xl text-white outline-none 
+    focus:border-[#b6ff00] focus:ring-1 focus:ring-[#b6ff00]/20 
+    transition-all duration-200 placeholder:text-gray-600;
+  }
+}
+
+@layer utilities {
+  /* Scrollbar */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background-color: rgb(var(--surface));
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background-color: #333;
+    border-radius: 9999px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background-color: rgb(var(--primary));
+  }
+
+  /* Standard Card */
+  .card-base {
+    @apply bg-[#151515] border border-[#262626] rounded-2xl overflow-hidden;
+  }
+
+  /* Standard Buttons */
+  .btn-primary {
+    @apply bg-[#b6ff00] text-black font-bold rounded-xl hover:bg-[#a3e600] 
+    shadow-[0_0_15px_rgba(182,255,0,0.2)] hover:shadow-[0_0_20px_rgba(182,255,0,0.4)] 
+    transition-all flex items-center justify-center gap-2;
+  }
+
+  .btn-secondary {
+    @apply bg-[#1a1a1a] text-white border border-[#262626] hover:bg-[#222] 
+    rounded-xl transition-all flex items-center justify-center gap-2;
+  }
+
+  .btn-danger {
+    @apply text-red-500 bg-red-500/10 hover:bg-red-500/20 border border-red-500/20 
+    rounded-xl transition-all flex items-center justify-center gap-2;
+  }
+}

@@ -1,0 +1,88 @@
+{
+  "transactions": [
+    {
+      "id": "fd623200-f754-494f-b768-ae360ebef099",
+      "customer": "testc1",
+      "fuel": "نەوت",
+      "brand": "کار",
+      "unit": "بەرمیل",
+      "qty": 3,
+      "price": 180000,
+      "total": 540000,
+      "paid": 300000,
+      "remain": 340000,
+      "status": "partial",
+      "date": "01/02/2026",
+      "time": "7:12:41 PM",
+      "note": "dww sad hazar drawa",
+      "unitCost": 0,
+      "profit": 540000
+    },
+    {
+      "id": "eefae4c4-8d2f-42e1-9aaf-d441ddffd00b",
+      "customer": "testc1",
+      "fuel": "نەوت",
+      "brand": "کار",
+      "unit": "بەرمیل",
+      "qty": 3,
+      "price": 170000,
+      "total": 510000,
+      "paid": 100000,
+      "remain": 410000,
+      "status": "partial",
+      "date": "01/02/2026",
+      "time": "11:39:45 PM",
+      "note": "",
+      "unitCost": 0,
+      "profit": 510000
+    },
+    {
+      "id": "27efab6a-3521-4c23-9b9e-ea07760054d8",
+      "customer": "testc1",
+      "fuel": "نەوت",
+      "brand": "کار",
+      "unit": "بەرمیل",
+      "qty": 1,
+      "price": 170000,
+      "total": 170000,
+      "paid": 99999,
+      "remain": 70001,
+      "status": "partial",
+      "date": "01/02/2026",
+      "time": "11:40:50 PM",
+      "note": "sdfvkjsddddbhkjdfbjvsbjbfjvberjwer gkerjbgerbgergjejrgjenr nbe rferjfbejrjfebrfbergiebrvebjvewj vje vje rvkejr ver gergwergegverberjgber",
+      "unitCost": 0,
+      "profit": 170000
+    }
+  ],
+  "customers": [
+    {
+      "id": "929ff7c2-4c2d-492e-b132-e17f0dc90552",
+      "name": "testc1",
+      "phone": "0750 475 25 75"
+    }
+  ],
+  "prices": [
+    {
+      "product": "نەوت",
+      "productNorm": "نەوت",
+      "brand": "کار",
+      "unit": "بەرمیل",
+      "unitPriceIQD": 170000
+    },
+    {
+      "product": "نەوت",
+      "productNorm": "نەوت",
+      "brand": "kar",
+      "unit": "بەرمیل",
+      "unitPriceIQD": 190000
+    }
+  ],
+  "businessInfo": {
+    "name": "علی",
+    "role": "خاوەن کار",
+    "email": "exaple3@gmail.com",
+    "phone": "0750 345 36 53",
+    "address": "هەولێر"
+  }
+}
