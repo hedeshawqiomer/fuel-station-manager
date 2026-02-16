@@ -4,6 +4,44 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  :root {
+    /* ... (existing variables) ... */
+  }
+}
+
+/* --- NATIVE PRINT STYLES --- */
+@media print {
+  /* Hide everything by default */
+  body * {
+    visibility: hidden;
+  }
+
+  /* Show only the printable section */
+  #printable-receipt, #printable-receipt * {
+    visibility: visible;
+  }
+
+  /* Position the receipt at the top left */
+  #printable-receipt {
+    position: fixed !important;
+    left: 0 !important;
+    top: 0 !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: white !important;
+    display: block !important;
+    z-index: 9999 !important;
+  }
+
+  /* Hide custom scrollbars or other artifacts if needed */
+  ::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+
 /* --- 1. DEFINE YOUR THEME COLORS HERE --- */
 @layer base {
   :root {

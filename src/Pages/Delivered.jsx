@@ -18,17 +18,52 @@ import {
   SearchX,
 } from "lucide-react";
 
+import { useEffect } from "react";
+
+import { Receipt } from "../Components/Receipt";
+import { Printer } from "lucide-react";
+
 export default function Delivered() {
   const dispatch = useDispatch();
   const transactions = useSelector((state) => state.data.transactions);
   const prices = useSelector((state) => state.data.prices);
   const filter = useSelector((state) => state.ui.filter);
+  // Business Info is stored in auth.user (mirrors BusinessInfo.jsx)
+  const businessInfo = useSelector((state) => state.auth.user);
 
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isDetailsOpen, setIsDetailsOpen] = useState(false);
   const [selectedTx, setSelectedTx] = useState(null);
+  
+  // --- PRINTING ---
+  const [printTx, setPrintTx] = useState(null);
+
+  // Trigger print cleanly when state changes and component is ready
+  useEffect(() => {
+  useEffect(() => {
+    if (printTx) {
+      // Small timeout to ensure DOM is painted
+      setTimeout(() => {
+          const el = document.getElementById("printable-receipt");
+          if (el) {
+             window.print();
+             // Optional logic: setPrintTx(null) if you want it to disappear after printing
+          } else {
+             alert("Error: Print source element not found!");
+          }
+      }, 500);
+    }
+  }, [printTx]); 
+
+  const triggerPrint = (tx) => {
+    setPrintTx(tx);
+  };
+
+  const testSystemPrint = () => {
+      window.print();
+  }
 
   const hasDateFilter = startDate || endDate;
 
@@ -92,6 +127,14 @@ export default function Delivered() {
 
   return (
     <div className="p-6">
+      {/* HIDDEN RECEIPT COMPONENT FOR PRINTING */}
+      {/* Using absolute positioning off-screen + ID lookup */}
+      <div style={{ position: "absolute", top: "-10000px", left: "-10000px" }}>
+         <div id="printable-receipt">
+            <Receipt transaction={printTx} businessInfo={businessInfo} />
+         </div>
+      </div>
+
       <div className="flex flex-col xl:flex-row justify-between items-start xl:items-center mb-6 gap-4">
         <div>
           <h4 className="text-xl font-bold flex items-center gap-2 text-text-main">
@@ -254,12 +297,21 @@ export default function Delivered() {
                   <span className="text-text-muted text-xs flex items-center gap-1">
                     <Calendar size={12} /> {t.date}
                   </span>
-                  <button
-                    onClick={() => handleViewDetails(t)}
-                    className="btn-primary px-3 py-1 text-xs h-auto flex items-center gap-1.5"
-                  >
-                    <Eye size={12} /> وەسڵ
-                  </button>
+                  <div className="flex gap-2">
+                    <button
+                      onClick={() => triggerPrint(t)}
+                      className="btn-secondary px-3 py-1 text-xs h-auto flex items-center gap-1.5 hover:text-primary hover:border-primary"
+                      title="Print Receipt"
+                    >
+                      <Printer size={12} />
+                    </button>
+                    <button
+                      onClick={() => handleViewDetails(t)}
+                      className="btn-primary px-3 py-1 text-xs h-auto flex items-center gap-1.5"
+                    >
+                      <Eye size={12} /> وەسڵ
+                    </button>
+                  </div>
                 </div>
               </div>
             );

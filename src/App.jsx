@@ -45,12 +45,11 @@ export default function App() {
   // --- 🔌 LOAD DATA FROM DATABASE ---
   useEffect(() => {
     const loadDB = async () => {
+    const loadDB = async () => {
       if (window.api) {
-        console.log("🔌 App Started: Connecting to Database...");
         try {
           // 1. Get ALL data from the JSON file
           const dbData = await window.api.loadInitialData();
-          console.log("📥 Data Received:", dbData);
 
           if (dbData) {
             // 2. Send Transactions/Customers to Data Slice
@@ -64,7 +63,6 @@ export default function App() {
 
             // 3. 👇 Send Business Info to Auth Slice (THE FIX) 👇
             if (dbData.businessInfo) {
-              console.log("👤 Updating User Info:", dbData.businessInfo);
               dispatch(updateUserInfo(dbData.businessInfo));
             }
           }
