@@ -108,7 +108,7 @@ export default function Customers() {
       {/* Header */}
       <div className="flex flex-col md:flex-row justify-between items-center mb-8 gap-4">
         <div>
-          <h1 className="text-2xl font-bold flex items-center gap-2 text-white">
+          <h1 className="text-2xl font-bold flex items-center gap-2 text-text-main">
             <Users className="text-primary" /> بەڕێوەبردنی کڕیاران
           </h1>
           <p className="text-text-muted text-sm mt-1">
@@ -123,9 +123,9 @@ export default function Customers() {
               placeholder="گەڕان..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="py-2.5 pr-10 pl-4 w-full bg-surface border border-border rounded-lg text-white focus:border-primary focus:outline-none placeholder:text-gray-600"
+              className="py-2.5 pr-10 pl-4 w-full bg-surface border border-border rounded-lg text-text-main focus:border-primary focus:outline-none placeholder:text-text-muted"
             />
-            <Search className="absolute left-3 top-3 text-gray-500" size={18} />
+            <Search className="absolute left-3 top-3 text-text-muted" size={18} />
           </div>
           <button
             onClick={() => setIsModalOpen(true)}
@@ -143,9 +143,9 @@ export default function Customers() {
           <div className="col-span-full py-12 text-center border-2 border-dashed border-border rounded-xl bg-surface-hover">
             <Users
               size={48}
-              className="mx-auto text-gray-600 mb-3 opacity-50"
+              className="mx-auto text-text-muted mb-3 opacity-50"
             />
-            <p className="text-gray-500 font-medium">هیچ کڕیارێک نەدۆزرایەوە</p>
+            <p className="text-text-muted font-medium">هیچ کڕیارێک نەدۆزرایەوە</p>
           </div>
         ) : (
           filteredCustomers.map((c) => (
@@ -158,7 +158,7 @@ export default function Customers() {
                   <Users size={20} />
                 </div>
                 <div>
-                  <h3 className="font-bold text-lg text-white">{c.name}</h3>
+                  <h3 className="font-bold text-lg text-text-main">{c.name}</h3>
                   <div className="flex items-center gap-1.5 text-text-muted text-sm mt-0.5">
                     <Phone size={12} className="text-primary" />
                     <span dir="ltr" className="font-mono">
@@ -181,15 +181,15 @@ export default function Customers() {
 
       {/* Modal */}
       {isModalOpen && (
-        <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-[100] flex items-center justify-center p-4">
+        <div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[100] flex items-center justify-center p-4">
           <div className="card-base w-full max-w-sm p-6 shadow-2xl animate-in fade-in zoom-in-95 border border-border">
             <div className="flex justify-between items-center mb-6 border-b border-border pb-4">
-              <h3 className="text-xl font-bold flex items-center gap-2 text-white">
+              <h3 className="text-xl font-bold flex items-center gap-2 text-text-main">
                 <Plus className="text-primary" size={24} /> زیادکردنی کڕیار
               </h3>
               <button
                 onClick={() => setIsModalOpen(false)}
-                className="text-gray-500 hover:text-white transition-colors"
+                className="text-text-muted hover:text-text-main transition-colors"
               >
                 <X size={20} />
               </button>
@@ -205,7 +205,7 @@ export default function Customers() {
                   type="text"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  className="w-full p-3 bg-surface border border-border rounded-lg text-white focus:border-primary focus:outline-none placeholder:text-gray-600"
+                  className="w-full p-3 bg-surface border border-border rounded-lg text-text-main focus:border-primary focus:outline-none placeholder:text-text-muted"
                   placeholder="ناوی سیانی..."
                 />
               </div>
@@ -217,7 +217,7 @@ export default function Customers() {
                   type="tel"
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
-                  className="w-full p-3 font-mono text-left bg-surface border border-border rounded-lg text-white focus:border-primary focus:outline-none placeholder:text-gray-600"
+                  className="w-full p-3 font-mono text-left bg-surface border border-border rounded-lg text-text-main focus:border-primary focus:outline-none placeholder:text-text-muted"
                   placeholder="0750..."
                   dir="ltr"
                 />

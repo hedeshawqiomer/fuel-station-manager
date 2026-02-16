@@ -20,6 +20,7 @@ const DynamicIcon = ({ icon: Icon, size, className }) => {
 };
 
 // --- Sub-components ---
+// --- Sub-components ---
 const InfoItem = ({ icon, label, value }) => (
   <div className="flex items-center gap-4 p-4 rounded-xl bg-surface-hover border border-border group hover:border-primary/30 transition-all duration-200">
     <div className="w-10 h-10 rounded-full bg-surface-active flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-black transition-colors shrink-0 shadow-sm">
@@ -29,9 +30,9 @@ const InfoItem = ({ icon, label, value }) => (
       <p className="text-xs text-text-muted font-bold mb-0.5 uppercase tracking-wide">
         {label}
       </p>
-      <p className="font-medium text-sm text-white">
+      <p className="font-medium text-sm text-text-main">
         {value || (
-          <span className="text-gray-600 italic text-xs">دیاری نەکراوە</span>
+          <span className="text-text-muted italic text-xs">دیاری نەکراوە</span>
         )}
       </p>
     </div>
@@ -42,11 +43,11 @@ const InputField = ({ icon, label, className, ...props }) => (
   <div className={`space-y-1.5 ${className}`}>
     <label className="text-xs font-bold text-text-muted">{label}</label>
     <div className="relative group">
-      <div className="absolute right-3 top-3.5 text-gray-500 group-focus-within:text-primary transition-colors pointer-events-none">
+      <div className="absolute right-3 top-3.5 text-text-muted group-focus-within:text-primary transition-colors pointer-events-none">
         <DynamicIcon icon={icon} size={18} />
       </div>
       <input
-        className="w-full py-3 pr-10 pl-4 bg-surface border border-border rounded-lg text-white focus:border-primary focus:ring-1 focus:ring-primary/20 outline-none transition-all placeholder:text-gray-600"
+        className="w-full py-3 pr-10 pl-4 bg-surface border border-border rounded-lg text-text-main focus:border-primary focus:ring-1 focus:ring-primary/20 outline-none transition-all placeholder:text-text-muted"
         {...props}
       />
     </div>
@@ -108,7 +109,7 @@ export default function BusinessInfo() {
       {/* Header */}
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8 gap-4">
         <div>
-          <h1 className="text-2xl font-bold flex items-center gap-3 text-white">
+          <h1 className="text-2xl font-bold flex items-center gap-3 text-text-main">
             <div className="p-2 bg-primary/10 rounded-lg">
               <Building2 className="text-primary" size={24} />
             </div>
@@ -132,7 +133,7 @@ export default function BusinessInfo() {
       {/* Card */}
       <div className="card-base shadow-2xl relative overflow-hidden border border-border/50">
         {/* Banner */}
-        <div className="h-48 bg-gradient-to-r from-[#0a0a0a] via-[#1a1a1a] to-[#0a0a0a] border-b border-border relative">
+        <div className="h-48 bg-surface-active border-b border-border relative">
           <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#b6ff00_1px,transparent_1px)] [background-size:16px_16px]"></div>
           {isEditing && (
             <div className="absolute top-4 left-4 bg-amber-500/10 text-amber-500 border border-amber-500/20 px-3 py-1.5 rounded-full text-xs font-bold flex items-center gap-2 animate-in fade-in slide-in-from-top-2">
@@ -147,19 +148,19 @@ export default function BusinessInfo() {
 
         {/* Avatar */}
         <div className="absolute top-28 right-10 z-10">
-          <div className="w-32 h-32 bg-[#121212] rounded-full border-[6px] border-[#121212] flex items-center justify-center text-primary shadow-xl overflow-hidden group relative">
+          <div className="w-32 h-32 bg-surface rounded-full border-[6px] border-surface flex items-center justify-center text-primary shadow-xl overflow-hidden group relative">
             <div className="absolute inset-0 bg-primary/5 group-hover:bg-primary/10 transition-colors"></div>
             <User size={56} className="relative z-10" />
           </div>
         </div>
 
         {/* Content */}
-        <div className="px-10 pt-20 pb-10 bg-[#121212]">
+        <div className="px-10 pt-20 pb-10 bg-surface">
           {!isEditing ? (
             // VIEW MODE: Renders directly from 'info' (Redux)
             <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
               <div className="mb-10 pr-4">
-                <h2 className="text-3xl font-black text-white mb-2 tracking-tight">
+                <h2 className="text-3xl font-black text-text-main mb-2 tracking-tight">
                   {info.name || "ناوی نەناسراو"}
                 </h2>
                 <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-primary/10 text-primary border border-primary/20">
@@ -240,7 +241,7 @@ export default function BusinessInfo() {
                 <button
                   type="button"
                   onClick={handleCancel}
-                  className="px-6 py-3 rounded-xl border border-border text-gray-400 hover:text-white hover:bg-surface-active font-bold text-sm transition-all flex items-center gap-2"
+                  className="px-6 py-3 rounded-xl border border-border text-text-muted hover:text-text-main hover:bg-surface-active font-bold text-sm transition-all flex items-center gap-2"
                 >
                   <X size={18} /> پاشگەزبوونەوە
                 </button>

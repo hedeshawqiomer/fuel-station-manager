@@ -1,3 +1,5 @@
+## note for development in one terminal npm run dev 
+## in another terminal npm run electron
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.

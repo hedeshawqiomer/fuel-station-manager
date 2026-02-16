@@ -123,7 +123,7 @@ export default function Loans() {
       {/* Header & Filter */}
       <div className="flex flex-col xl:flex-row justify-between items-start xl:items-center gap-4">
         <div>
-          <h1 className="text-2xl font-bold flex items-center gap-2 text-white">
+          <h1 className="text-2xl font-bold flex items-center gap-2 text-text-main">
             <Banknote className="text-primary" /> قەرزەکان
           </h1>
           <span className="text-text-muted text-sm mt-1 block">
@@ -143,26 +143,26 @@ export default function Loans() {
           <div className="flex items-center gap-2 px-2 text-text-muted">
             <Filter
               size={16}
-              className={hasDateFilter ? "text-primary" : "text-gray-500"}
+              className={hasDateFilter ? "text-primary" : "text-text-muted"}
             />
             <span className="text-xs font-bold hidden sm:inline">فیلتەر:</span>
           </div>
-          <div className="flex items-center gap-2 bg-surface border border-border rounded-lg px-3 py-1.5">
-            <span className="text-[10px] text-gray-500 font-bold">لە</span>
+          <div className="flex items-center gap-2 bg-surface border border-border rounded-lg px-3 py-1.5 min-w-[140px]">
+            <span className="text-[10px] text-text-muted font-bold">لە</span>
             <input
               type="date"
               value={startDate}
               onChange={(e) => setStartDate(e.target.value)}
-              className="bg-transparent text-white text-xs border-none p-0 h-auto focus:ring-0"
+              className="bg-transparent text-text-main text-xs border-none p-0 h-auto focus:ring-0 w-full"
             />
           </div>
-          <div className="flex items-center gap-2 bg-surface border border-border rounded-lg px-3 py-1.5">
-            <span className="text-[10px] text-gray-500 font-bold">تا</span>
+          <div className="flex items-center gap-2 bg-surface border border-border rounded-lg px-3 py-1.5 min-w-[140px]">
+            <span className="text-[10px] text-text-muted font-bold">تا</span>
             <input
               type="date"
               value={endDate}
               onChange={(e) => setEndDate(e.target.value)}
-              className="bg-transparent text-white text-xs border-none p-0 h-auto focus:ring-0"
+              className="bg-transparent text-text-main text-xs border-none p-0 h-auto focus:ring-0 w-full"
             />
           </div>
           {hasDateFilter && (
@@ -180,7 +180,7 @@ export default function Loans() {
       </div>
 
       {/* Stats Cards */}
-      <div className="bg-[#151515] border border-border rounded-2xl grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x md:divide-x-reverse divide-border shadow-lg overflow-hidden">
+      <div className="bg-surface border border-border rounded-2xl grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x md:divide-x-reverse divide-border shadow-lg overflow-hidden">
         <div className="p-5 flex items-center gap-4 hover:bg-surface-hover transition-colors group">
           <div className="w-12 h-12 bg-blue-500/10 text-blue-500 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
             <User size={24} />
@@ -189,7 +189,7 @@ export default function Loans() {
             <div className="text-text-muted text-xs font-bold mb-0.5 uppercase tracking-wide">
               ژمارەی قەرزداران
             </div>
-            <div className="text-2xl font-black text-white">
+            <div className="text-2xl font-black text-text-main">
               {uniqueDebtors}
             </div>
           </div>
@@ -202,7 +202,7 @@ export default function Loans() {
             <div className="text-text-muted text-xs font-bold mb-0.5 uppercase tracking-wide">
               ژمارەی قەرزەکان
             </div>
-            <div className="text-2xl font-black text-white">
+            <div className="text-2xl font-black text-text-main">
               {totalLoansCount}
             </div>
           </div>
@@ -216,9 +216,9 @@ export default function Loans() {
             <div className="text-amber-500 text-xs font-bold mb-0.5 flex items-center gap-1 uppercase tracking-wide">
               کۆی گشتی قەرز <ArrowUpRight size={12} />
             </div>
-            <div className="text-2xl font-black text-white font-mono tracking-tight">
+            <div className="text-2xl font-black text-text-main font-mono tracking-tight">
               {totalDebt.toLocaleString()}{" "}
-              <span className="text-xs text-gray-500 font-bold">IQD</span>
+              <span className="text-xs text-text-muted font-bold">IQD</span>
             </div>
           </div>
         </div>
@@ -227,18 +227,18 @@ export default function Loans() {
       {/* Loans Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
         {filteredLoans.length === 0 ? (
-          <div className="col-span-full border-2 border-dashed border-border rounded-xl p-12 text-center text-gray-500 bg-surface-hover/50 flex flex-col items-center">
+          <div className="col-span-full border-2 border-dashed border-border rounded-xl p-12 text-center text-text-muted bg-surface-hover/50 flex flex-col items-center">
             {hasDateFilter ? (
               <>
-                <SearchX size={48} className="mb-4 text-gray-600 opacity-50" />
-                <h5 className="font-bold text-gray-400">
+                <SearchX size={48} className="mb-4 text-text-muted opacity-50" />
+                <h5 className="font-bold text-text-muted">
                   هیچ ئەنجامێک نەدۆزرایەوە
                 </h5>
               </>
             ) : (
               <>
                 <CheckCircle size={48} className="mb-4 text-green-500/50" />
-                <h5 className="font-bold text-gray-300">هیچ قەرزێک نییە!</h5>
+                <h5 className="font-bold text-text-muted">هیچ قەرزێک نییە!</h5>
               </>
             )}
           </div>
@@ -274,13 +274,13 @@ export default function Loans() {
                   <div className="text-text-muted text-sm">⛽ {loan.fuel}</div>
                   <div className="text-text-muted text-sm">
                     بڕ:{" "}
-                    <span className="text-white">
+                    <span className="text-text-main">
                       {loan.qty} {loan.unit}
                     </span>
                   </div>
                   <div className="text-text-muted text-sm">
                     نرخی گشتی:{" "}
-                    <span className="text-white font-mono">
+                    <span className="text-text-main font-mono">
                       {Number(loan.total).toLocaleString()} IQD
                     </span>
                   </div>
@@ -301,7 +301,7 @@ export default function Loans() {
                     <div className="mt-2 bg-background border border-border p-2.5 rounded-lg flex gap-2 items-start">
                       <FileText
                         size={14}
-                        className="text-gray-500 mt-0.5 shrink-0"
+                        className="text-text-muted mt-0.5 shrink-0"
                       />
                       <p className="text-xs text-text-muted leading-relaxed whitespace-pre-wrap">
                         {loan.note}
@@ -310,7 +310,7 @@ export default function Loans() {
                   )}
                 </div>
                 <div className="p-3 border-t border-border flex justify-between items-center bg-surface">
-                  <span className="text-gray-500 text-xs flex items-center gap-1">
+                  <span className="text-text-muted text-xs flex items-center gap-1">
                     <Calendar size={12} /> {loan.date}
                   </span>
                   <button
@@ -396,14 +396,14 @@ const AlterLoanModal = ({ isOpen, onClose, loan, onUpdate }) => {
       className="fixed inset-0 z-[1060] flex items-center justify-center bg-black/70 backdrop-blur-sm p-4 text-right"
       dir="rtl"
     >
-      <div className="card-base w-full max-w-md shadow-2xl animate-in fade-in zoom-in-95">
-        <div className="p-4 border-b border-border flex justify-between items-center bg-surface-hover">
-          <h6 className="text-white font-bold m-0">
+      <div className="card-base w-full max-w-md shadow-2xl animate-in fade-in zoom-in-95 bg-surface border-border">
+        <div className="p-4 border-b border-border flex justify-between items-center bg-surface-hover rounded-t-xl">
+          <h6 className="text-text-main font-bold m-0">
             گۆڕینی قەرز{" "}
             <span className="text-primary text-sm">({loan.customer})</span>
           </h6>
           <button onClick={onClose}>
-            <X size={20} className="text-gray-400 hover:text-white" />
+            <X size={20} className="text-text-muted hover:text-text-main transition-colors" />
           </button>
         </div>
         <form onSubmit={handleSubmit} className="p-5 space-y-4">
@@ -416,13 +416,13 @@ const AlterLoanModal = ({ isOpen, onClose, loan, onUpdate }) => {
           <div className="grid grid-cols-2 gap-3">
             <div
               onClick={() => setMode("partial")}
-              className={`p-3 rounded-lg border cursor-pointer text-center transition-all ${mode === "partial" ? "border-primary bg-primary/10 text-white" : "border-border bg-surface-hover text-gray-500"}`}
+              className={`p-3 rounded-lg border cursor-pointer text-center transition-all ${mode === "partial" ? "border-primary bg-primary/10 text-text-main" : "border-border bg-surface-hover text-text-muted"}`}
             >
               <div className="font-bold text-sm">پێدانی بڕێک</div>
             </div>
             <div
               onClick={() => setMode("paid")}
-              className={`p-3 rounded-lg border cursor-pointer text-center transition-all ${mode === "paid" ? "border-primary bg-primary/10 text-white" : "border-border bg-surface-hover text-gray-500"}`}
+              className={`p-3 rounded-lg border cursor-pointer text-center transition-all ${mode === "paid" ? "border-primary bg-primary/10 text-text-main" : "border-border bg-surface-hover text-text-muted"}`}
             >
               <div className="font-bold text-sm">پێدانی هەمووی</div>
             </div>
@@ -438,7 +438,7 @@ const AlterLoanModal = ({ isOpen, onClose, loan, onUpdate }) => {
                 value={payNow}
                 onChange={handleInputChange}
                 placeholder="IQD ..."
-                className="w-full p-2 bg-surface border border-border rounded focus:border-primary outline-none text-white font-mono appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+                className="w-full p-2 bg-surface border border-border rounded focus:border-primary outline-none text-text-main font-mono appearance-none [&::-webkit-inner-spin-button]:appearance-none"
                 autoFocus
               />
               <div className="flex justify-between text-sm text-text-muted pt-2 border-t border-border">

@@ -119,7 +119,7 @@ export default function Prices() {
     <div className="p-6">
       {/* Header */}
       <header className="flex items-center justify-between mb-8 border-b border-border pb-4">
-        <h1 className="text-2xl font-bold flex items-center gap-2 text-white">
+        <h1 className="text-2xl font-bold flex items-center gap-2 text-text-main">
           <Tag className="text-primary" /> نرخەکانی ئەمڕۆ
         </h1>
         <div className="relative">
@@ -127,7 +127,7 @@ export default function Prices() {
           <select
             value={filter}
             onChange={(e) => setFilter(e.target.value)}
-            className="appearance-none bg-surface-hover text-white font-bold text-sm py-2 px-4 pr-8 rounded-lg border border-border focus:border-primary focus:outline-none cursor-pointer transition-colors"
+            className="appearance-none bg-surface-hover text-text-main font-bold text-sm py-2 px-4 pr-8 rounded-lg border border-border focus:border-primary focus:outline-none cursor-pointer transition-colors"
           >
             <option value="ALL">گشتی (ALL)</option>
             {uniqueProducts.map((prod, index) => (
@@ -136,7 +136,7 @@ export default function Prices() {
               </option>
             ))}
           </select>
-          <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-400">
+          <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-text-muted">
             <svg
               className="fill-current h-4 w-4"
               xmlns="http://www.w3.org/2000/svg"
@@ -158,7 +158,7 @@ export default function Prices() {
             <div className="p-5">
               <div className="flex justify-between items-start mb-6">
                 <div className="flex flex-col gap-1.5">
-                  <h2 className="text-2xl font-bold text-white tracking-wide">
+                  <h2 className="text-2xl font-bold text-text-main tracking-wide">
                     {item.product}
                   </h2>
                   <span className="bg-surface-active text-text-muted text-[11px] px-2.5 py-1 rounded-md w-fit border border-border font-medium">
@@ -175,9 +175,9 @@ export default function Prices() {
               <div className="mt-2">
                 <p className="text-xs text-text-muted mb-1 flex items-center gap-1">
                   نرخی هەر{" "}
-                  <span className="text-gray-300 font-bold">{item.unit}ێک</span>
+                  <span className="text-text-main font-bold">{item.unit}ێک</span>
                 </p>
-                <div className="text-4xl font-black text-white tracking-tight flex items-baseline gap-1.5 font-mono">
+                <div className="text-4xl font-black text-text-main tracking-tight flex items-baseline gap-1.5 font-mono">
                   {Number(item.unitPriceIQD).toLocaleString()}{" "}
                   <span className="text-sm text-primary font-bold opacity-80 font-sans">
                     IQD

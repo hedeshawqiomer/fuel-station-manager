@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { logout } from "../store/authSlice";
 import { setPage, toggleSidebar } from "../store/uiSlice";
+import ThemeToggle from "./ThemeToggle"; // Import ThemeToggle
 import {
   User,
   LogOut,
@@ -42,12 +43,12 @@ export default function Header() {
   };
 
   return (
-    <header className="sticky top-0 z-40 bg-[#0a0a0a] border-b border-border h-16 flex items-center shadow-sm">
+    <header className="sticky top-0 z-40 bg-background border-b border-border h-16 flex items-center shadow-sm">
       <div className="flex items-center justify-between w-full px-4 lg:px-6">
         {/* Mobile Menu Button */}
         <button
           onClick={() => dispatch(toggleSidebar())}
-          className="lg:hidden text-gray-400 hover:text-white p-2 hover:bg-surface-hover rounded-lg transition-all"
+          className="lg:hidden text-text-muted hover:text-text-main p-2 hover:bg-surface-hover rounded-lg transition-all"
         >
           <Menu size={24} />
         </button>
@@ -55,9 +56,12 @@ export default function Header() {
         {/* Spacer to push User Profile to the End (Left in RTL) */}
         <div className="flex-grow"></div>
 
-        {/* User Profile Dropdown */}
-        <div className="relative" ref={dropdownRef}>
-          <button
+        <div className="flex items-center gap-4">
+          <ThemeToggle />
+          
+          {/* User Profile Dropdown */}
+          <div className="relative" ref={dropdownRef}>
+            <button
             onClick={() => setIsOpen(!isOpen)}
             className={`flex items-center gap-3 pl-2 pr-4 py-1.5 rounded-full border transition-all duration-200 ${
               isOpen
@@ -70,10 +74,10 @@ export default function Header() {
             </div>
 
             <div className="hidden sm:flex flex-col items-end text-right">
-              <span className="text-sm font-bold text-white leading-tight">
+              <span className="text-sm font-bold text-text-main leading-tight">
                 {safeUser.name}
               </span>
-              <span className="text-[10px] text-gray-500 font-medium uppercase tracking-wide">
+              <span className="text-[10px] text-text-muted font-medium uppercase tracking-wide">
                 {safeUser.role}
               </span>
             </div>
@@ -90,13 +94,13 @@ export default function Header() {
           {isOpen && (
             // FIX: Changed 'end-0' to 'left-0' to explicitly align to the left edge in RTL
             // Added 'origin-top-left' for correct animation direction
-            <div className="absolute left-0 top-full mt-2 w-72 bg-[#151515] border border-border rounded-xl shadow-2xl z-[100] animate-in fade-in zoom-in-95 slide-in-from-top-2 origin-top-left overflow-hidden">
+            <div className="absolute left-0 top-full mt-2 w-72 bg-surface border border-border rounded-xl shadow-2xl z-[100] animate-in fade-in zoom-in-95 slide-in-from-top-2 origin-top-left overflow-hidden">
               {/* Dropdown Header */}
               <div className="p-5 border-b border-border bg-surface-hover/30">
-                <p className="font-bold text-base text-right text-white">
+                <p className="font-bold text-base text-right text-text-main">
                   {safeUser.name}
                 </p>
-                <p className="text-gray-500 text-xs font-mono text-right mt-0.5">
+                <p className="text-text-muted text-xs font-mono text-right mt-0.5">
                   {safeUser.email}
                 </p>
                 <div className="mt-3 flex items-center justify-end gap-1.5 bg-primary/10 text-primary px-2.5 py-1 rounded-md text-[10px] font-bold w-fit ml-auto border border-primary/20">
@@ -133,6 +137,7 @@ export default function Header() {
               </div>
             </div>
           )}
+          </div>
         </div>
       </div>
     </header>
@@ -146,7 +151,7 @@ const MenuBtn = ({ onClick, icon, label }) => {
   return (
     <button
       onClick={onClick}
-      className="w-full flex items-center justify-end gap-3 px-3 py-2.5 text-sm text-gray-400 hover:text-white hover:bg-surface-hover rounded-lg transition-all group"
+      className="w-full flex items-center justify-end gap-3 px-3 py-2.5 text-sm text-text-muted hover:text-text-main hover:bg-surface-hover rounded-lg transition-all group"
     >
       <span className="group-hover:text-primary transition-colors font-medium">
         {label}
@@ -154,7 +159,7 @@ const MenuBtn = ({ onClick, icon, label }) => {
       {LucideIcon && (
         <LucideIcon
           size={16}
-          className="text-gray-500 group-hover:text-primary transition-colors"
+          className="text-text-muted group-hover:text-primary transition-colors"
         />
       )}
     </button>

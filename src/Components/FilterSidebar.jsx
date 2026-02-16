@@ -71,7 +71,7 @@ export default function FilterSidebar() {
   return (
     <aside
       className={`
-        fixed top-0 right-0 h-full w-[280px] bg-[#0a0a0a] border-l border-border z-50 
+        fixed top-0 right-0 h-full w-[280px] bg-background border-l border-border z-50 
         transition-transform duration-300 ease-in-out flex flex-col
         lg:static lg:translate-x-0 
         ${isSidebarOpen ? "translate-x-0 shadow-2xl" : "translate-x-full"} 
@@ -80,21 +80,21 @@ export default function FilterSidebar() {
       {/* HEADER */}
       <div className="p-6 flex items-center justify-between border-b border-border">
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 bg-[#b6ff00] rounded-xl flex items-center justify-center text-black shadow-[0_0_15px_rgba(182,255,0,0.3)]">
+          <div className="w-10 h-10 bg-primary rounded-xl flex items-center justify-center text-black shadow-[0_0_15px_rgba(182,255,0,0.3)]">
             <Droplet size={24} strokeWidth={2.5} className="fill-black/20" />
           </div>
           <div className="flex flex-col">
-            <span className="text-lg font-black tracking-tight leading-none text-white">
+            <span className="text-lg font-black tracking-tight leading-none text-text-main">
               شوێنی
             </span>
-            <span className="text-lg font-black tracking-tight leading-none text-[#b6ff00]">
+            <span className="text-lg font-black tracking-tight leading-none text-primary">
               {user?.name || "بەڕێوەبەر"}
             </span>
           </div>
         </div>
         <button
           onClick={() => dispatch(setPage(currentPage))}
-          className="lg:hidden text-gray-400 hover:text-white"
+          className="lg:hidden text-text-muted hover:text-text-main"
         >
           <X size={24} />
         </button>
@@ -141,7 +141,7 @@ export default function FilterSidebar() {
               placeholder="گەڕان..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full bg-surface-hover border border-border rounded-lg px-3 py-2 text-sm text-white focus:border-primary focus:outline-none placeholder:text-gray-600"
+              className="w-full bg-surface-hover border border-border rounded-lg px-3 py-2 text-sm text-text-main focus:border-primary focus:outline-none placeholder:text-text-muted"
             />
           </div>
           <ul className="flex-1 overflow-y-auto px-2 space-y-1 custom-scrollbar">
@@ -150,7 +150,7 @@ export default function FilterSidebar() {
               className={`flex justify-between items-center p-2.5 rounded-lg cursor-pointer transition-all ${
                 activeFilter === "All"
                   ? "bg-primary text-black font-bold shadow-lg shadow-primary/20"
-                  : "hover:bg-surface-hover text-gray-400"
+                  : "hover:bg-surface-hover text-text-muted"
               }`}
             >
               <div className="flex items-center gap-2">
@@ -163,7 +163,7 @@ export default function FilterSidebar() {
             </li>
 
             {filteredCustomers.length === 0 ? (
-              <div className="text-center py-4 text-xs text-gray-600">
+              <div className="text-center py-4 text-xs text-text-muted">
                 نەدۆزرایەوە
               </div>
             ) : (
@@ -191,7 +191,7 @@ const NavItem = ({ icon, label, active, onClick }) => (
     className={`w-full flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm transition-all duration-200 ${
       active
         ? "text-primary bg-surface-hover font-bold border-r-2 border-primary shadow-sm"
-        : "text-gray-400 hover:bg-surface-hover hover:text-white"
+        : "text-text-muted hover:bg-surface-hover hover:text-text-main"
     }`}
   >
     {icon} <span>{label}</span>
@@ -203,8 +203,8 @@ const FilterItem = ({ label, count, active, onClick }) => (
     onClick={onClick}
     className={`flex justify-between items-center p-2.5 rounded-lg cursor-pointer transition-all ${
       active
-        ? "bg-surface-active text-white border-r-2 border-primary"
-        : "hover:bg-surface-hover text-gray-400 hover:text-gray-200"
+        ? "bg-surface-active text-text-main border-r-2 border-primary"
+        : "hover:bg-surface-hover text-text-muted hover:text-text-main"
     }`}
   >
     <span className="text-sm truncate">{label}</span>
@@ -212,7 +212,7 @@ const FilterItem = ({ label, count, active, onClick }) => (
       className={`text-[10px] font-bold px-2 py-0.5 rounded-full min-w-[24px] text-center ${
         active
           ? "bg-primary text-black"
-          : "bg-surface border border-border text-gray-500"
+          : "bg-surface border border-border text-text-muted"
       }`}
     >
       {count}

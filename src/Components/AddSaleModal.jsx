@@ -25,17 +25,17 @@ const DarkModeAutofillFix = () => (
 // --- 2. INPUT CLASSES ---
 const inputBaseClass = `
   w-full 
-  bg-[#151515] 
-  border border-[#333] 
+  bg-surface 
+  border border-border 
   rounded-lg 
   p-3 
-  text-white 
+  text-text-main 
   text-sm font-bold
-  placeholder:text-gray-600 
+  placeholder:text-text-muted 
   outline-none 
-  focus:border-[#b6ff00] 
+  focus:border-primary 
   focus:ring-1 
-  focus:ring-[#b6ff00]/50
+  focus:ring-primary/50
   transition-all 
 `;
 
@@ -270,19 +270,19 @@ const AddSaleForm = ({
       <div className="bg-surface border border-border rounded-xl w-full max-w-4xl shadow-2xl flex flex-col max-h-[95vh] animate-in fade-in zoom-in-95 duration-200">
         {/* Header */}
         <div className="flex justify-between items-center p-4 border-b border-border bg-surface rounded-t-xl">
-          <h5 className="text-white font-bold flex items-center gap-2">
-            <Plus size={20} className="text-[#b6ff00]" /> زیادکردنی فرۆشتن
+          <h5 className="text-text-main font-bold flex items-center gap-2">
+            <Plus size={20} className="text-primary" /> زیادکردنی فرۆشتن
           </h5>
           <button
             onClick={onClose}
-            className="text-gray-400 hover:text-white p-1 hover:bg-surface-hover rounded-lg transition-colors"
+            className="text-text-muted hover:text-text-main p-1 hover:bg-surface-hover rounded-lg transition-colors"
           >
             <X size={24} />
           </button>
         </div>
 
         {/* Scrollable Body - AUTOCOMPLETE OFF */}
-        <div className="flex-1 overflow-y-auto p-5 custom-scrollbar bg-[#0f0f0f]">
+        <div className="flex-1 overflow-y-auto p-5 custom-scrollbar bg-surface-hover">
           <form
             onSubmit={handleSubmit}
             className="space-y-6"
@@ -290,7 +290,7 @@ const AddSaleForm = ({
           >
             {/* 1. Main Info */}
             <div className="bg-surface-active/50 border border-border rounded-xl p-5 relative pt-7">
-              <h6 className="text-[#b6ff00] font-bold text-xs absolute -top-2.5 right-4 bg-[#0f0f0f] px-2 border border-border rounded flex items-center gap-1">
+              <h6 className="text-primary font-bold text-xs absolute -top-2.5 right-4 bg-surface-hover px-2 border border-border rounded flex items-center gap-1">
                 <User size={12} /> زانیاری سەرەکی
               </h6>
 
@@ -377,7 +377,7 @@ const AddSaleForm = ({
 
             {/* 2. Calculation */}
             <div className="bg-surface-active/50 border border-border rounded-xl p-5 relative pt-7">
-              <h6 className="text-[#b6ff00] font-bold text-xs absolute -top-2.5 right-4 bg-[#0f0f0f] px-2 border border-border rounded flex items-center gap-1">
+              <h6 className="text-primary font-bold text-xs absolute -top-2.5 right-4 bg-surface-hover px-2 border border-border rounded flex items-center gap-1">
                 <Calculator size={12} /> هەژمارکردن
               </h6>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
@@ -400,7 +400,7 @@ const AddSaleForm = ({
                     کۆی گشتی (IQD)
                   </label>
                   <div
-                    className="w-full bg-[#151515] border border-border rounded-lg p-3 text-[#b6ff00] text-lg font-mono font-bold text-left"
+                    className="w-full bg-surface border border-border rounded-lg p-3 text-primary text-lg font-mono font-bold text-left"
                     dir="ltr"
                   >
                     {formData.totalPrice.toLocaleString()}
@@ -411,7 +411,7 @@ const AddSaleForm = ({
 
             {/* 3. Payment Status */}
             <div className="bg-surface-active/50 border border-border rounded-xl p-5 relative pt-7">
-              <h6 className="text-[#b6ff00] font-bold text-xs absolute -top-2.5 right-4 bg-[#0f0f0f] px-2 border border-border rounded flex items-center gap-1">
+              <h6 className="text-primary font-bold text-xs absolute -top-2.5 right-4 bg-surface-hover px-2 border border-border rounded flex items-center gap-1">
                 <Wallet size={12} /> شێوازی پارەدان
               </h6>
               <div className="flex flex-col gap-3">
@@ -476,7 +476,7 @@ const AddSaleForm = ({
                           autoComplete="off"
                         />
                       </div>
-                      <div className="flex justify-between items-center bg-[#151515] p-2.5 rounded-lg border border-red-500/20">
+                      <div className="flex justify-between items-center bg-surface p-2.5 rounded-lg border border-red-500/20">
                         <span className="text-red-400 text-xs font-bold">
                           ماوە (قەرز):
                         </span>

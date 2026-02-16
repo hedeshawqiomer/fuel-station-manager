@@ -100,7 +100,7 @@ const Dashboard = () => {
     <div className="p-6">
       <div className="flex flex-col md:flex-row justify-between items-center md:items-center mb-8 gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-white flex items-center gap-2">
+          <h1 className="text-2xl font-bold text-text-main flex items-center gap-2">
             <ArrowUpRight className="text-primary" /> پوختەی داشبۆرد
           </h1>
           <p className="text-text-muted text-sm mt-1">
@@ -120,7 +120,7 @@ const Dashboard = () => {
             />
             <button
               onClick={handleNextDay}
-              className="p-2 hover:bg-surface-active text-text-muted rounded-lg"
+              className="p-2 hover:bg-surface-active text-text-muted hover:text-text-main rounded-lg transition-colors"
             >
               <ChevronRight size={20} />
             </button>
@@ -128,24 +128,24 @@ const Dashboard = () => {
               onClick={() => dateInputRef.current.showPicker()}
               className="flex flex-col items-center px-4 min-w-[140px] border-x border-border cursor-pointer hover:bg-surface-active rounded mx-1 py-1"
             >
-              <span className="text-[10px] uppercase font-bold text-gray-500 tracking-wider">
+              <span className="text-[10px] uppercase font-bold text-text-muted tracking-wider">
                 {isToday ? "ئەمڕۆ" : "بەرواری دیاریکراو"}
               </span>
-              <div className="flex items-center gap-2 text-white font-mono font-bold text-sm mt-0.5">
+              <div className="flex items-center gap-2 text-text-main font-mono font-bold text-sm mt-0.5">
                 <CalendarIcon size={14} className="text-primary" />{" "}
                 {formatDisplayDate(selectedDate)}
               </div>
             </div>
             <button
               onClick={handlePrevDay}
-              className="p-2 hover:bg-surface-active text-text-muted rounded-lg"
+              className="p-2 hover:bg-surface-active text-text-muted hover:text-text-main rounded-lg transition-colors"
             >
               <ChevronLeft size={20} />
             </button>
             {!isToday && (
               <button
                 onClick={() => setSelectedDate(new Date())}
-                className="mr-2 text-[10px] bg-primary-dim text-primary px-2 py-1 rounded hover:bg-primary/20 border border-primary/20 font-bold"
+                className="mr-2 text-[10px] bg-primary/10 text-primary px-2 py-1 rounded hover:bg-primary/20 border border-primary/20 font-bold"
               >
                 ئەمڕۆ
               </button>
@@ -196,14 +196,14 @@ const Dashboard = () => {
                   </span>
                   <span className="text-cyan-400 font-mono font-bold text-sm">
                     {item.qty.toLocaleString()}{" "}
-                    <span className="text-[9px] text-gray-500 block">
+                    <span className="text-[9px] text-text-muted block">
                       {item.unit}
                     </span>
                   </span>
                 </div>
               ))
             ) : (
-              <div className="col-span-2 text-center text-gray-600 font-mono text-xl font-bold py-2">
+              <div className="col-span-2 text-center text-text-muted font-mono text-xl font-bold py-2">
                 0
               </div>
             )}
@@ -213,9 +213,9 @@ const Dashboard = () => {
 
       <div className="card-base shadow-xl">
         <div className="p-5 border-b border-border flex justify-between items-center bg-surface-hover">
-          <h3 className="font-bold text-white flex items-center gap-2">
+          <h3 className="font-bold text-text-main flex items-center gap-2">
             <ShoppingBag size={18} className="text-primary" /> لیستی فرۆشتنەکان{" "}
-            <span className="bg-border text-gray-400 text-[10px] px-2 py-0.5 rounded-full font-mono">
+            <span className="bg-border text-text-muted text-[10px] px-2 py-0.5 rounded-full font-mono">
               {dailyTransactions.length}
             </span>
           </h3>
@@ -223,7 +223,7 @@ const Dashboard = () => {
         <div className="overflow-x-auto">
           {dailyTransactions.length > 0 ? (
             <table className="w-full text-right">
-              <thead className="bg-[#151515] text-xs text-gray-500 uppercase font-bold border-b border-border">
+              <thead className="bg-surface-active text-xs text-text-muted uppercase font-bold border-b border-border">
                 <tr>
                   <th className="px-6 py-4">کڕیار</th>
                   <th className="px-6 py-4">سووتەمەنی</th>
@@ -240,22 +240,22 @@ const Dashboard = () => {
                     className="hover:bg-surface-hover transition-colors"
                   >
                     <td className="px-6 py-4">
-                      <div className="font-bold">{tx.customer}</div>
-                      <div className="text-[10px] text-gray-500 font-mono">
+                      <div className="font-bold text-text-main">{tx.customer}</div>
+                      <div className="text-[10px] text-text-muted font-mono">
                         #{tx.id}
                       </div>
                     </td>
-                    <td className="px-6 py-4 text-gray-300">
+                    <td className="px-6 py-4 text-text-main">
                       {tx.fuel}{" "}
-                      <span className="text-gray-600 text-xs">
+                      <span className="text-text-muted text-xs">
                         ({tx.brand})
                       </span>
                     </td>
-                    <td className="px-6 py-4 font-mono text-gray-300">
+                    <td className="px-6 py-4 font-mono text-text-main">
                       {tx.qty}{" "}
                       <span className="text-primary text-xs">{tx.unit}</span>
                     </td>
-                    <td className="px-6 py-4 font-mono font-bold">
+                    <td className="px-6 py-4 font-mono font-bold text-text-main">
                       {Number(tx.total).toLocaleString()}
                     </td>
                     <td className="px-6 py-4">
@@ -265,7 +265,7 @@ const Dashboard = () => {
                     <td className="px-6 py-4 flex justify-center">
                       <button
                         onClick={() => handleViewDetails(tx)}
-                        className="p-2 hover:bg-surface-active rounded-lg text-gray-400 hover:text-white transition-colors"
+                        className="p-2 hover:bg-surface-active rounded-lg text-text-muted hover:text-text-main transition-colors"
                       >
                         <Eye size={18} />
                       </button>
@@ -277,9 +277,9 @@ const Dashboard = () => {
           ) : (
             <div className="py-16 text-center">
               <div className="w-16 h-16 bg-surface-hover rounded-full flex items-center justify-center mx-auto mb-4 border border-border">
-                <CalendarIcon size={30} className="text-gray-600" />
+                <CalendarIcon size={30} className="text-text-muted" />
               </div>
-              <p className="text-gray-500">هیچ داتایەک نییە بۆ ئەم بەروارە</p>
+              <p className="text-text-muted">هیچ داتایەک نییە بۆ ئەم بەروارە</p>
             </div>
           )}
         </div>
@@ -299,7 +299,7 @@ const Dashboard = () => {
 const StatCard = ({ title, value, suffix, icon, color }) => {
   const IconComponent = icon;
   return (
-    <div className="bg-gradient-to-br from-surface-hover to-surface p-5 rounded-2xl border border-border shadow-md relative overflow-hidden group">
+    <div className="bg-surface border border-border p-5 rounded-2xl shadow-md relative overflow-hidden group">
       <div className="absolute top-0 left-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
         <IconComponent size={60} className={color.replace("text-", "text-")} />
       </div>
@@ -308,7 +308,7 @@ const StatCard = ({ title, value, suffix, icon, color }) => {
       </div>
       <div className={`text-2xl font-black ${color} font-mono`}>
         {value.toLocaleString()}{" "}
-        <span className="text-xs opacity-50 text-gray-500">{suffix}</span>
+        <span className="text-xs opacity-50 text-text-muted">{suffix}</span>
       </div>
     </div>
   );

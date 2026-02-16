@@ -3,28 +3,30 @@ import tailwindAnimate from "tailwindcss-animate";
 
 /** @type {import('tailwindcss').Config} */
 export default {
+  darkMode: "class",
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
       colors: {
-        background: "#000000",
+        background: "hsl(var(--background))",
         surface: {
-          DEFAULT: "#0f0f0f",
-          hover: "#1a1a1a",
-          active: "#222222",
+          DEFAULT: "hsl(var(--surface))",
+          hover: "hsl(var(--surface-hover))",
+          active: "hsl(var(--surface-active))",
         },
         primary: {
-          DEFAULT: "#b6ff00",
-          hover: "#a3e600",
-          dim: "rgba(182, 255, 0, 0.1)",
+          DEFAULT: "hsl(var(--primary))",
+          hover: "hsl(var(--primary-hover))",
+          dim: "hsla(var(--primary), 0.1)", // Using hsla for opacity with variable
         },
         border: {
-          DEFAULT: "#333333",
-          light: "#444444",
+          DEFAULT: "hsl(var(--border))",
+          light: "hsl(var(--border-light))",
         },
         text: {
-          main: "#ffffff",
-          muted: "#9ca3af",
+          main: "hsl(var(--text-main))",
+          muted: "hsl(var(--text-muted))",
+          inverse: "hsl(var(--text-inverse))",
         },
       },
       fontFamily: {

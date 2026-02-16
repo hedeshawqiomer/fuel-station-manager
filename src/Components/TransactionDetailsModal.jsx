@@ -75,25 +75,25 @@ const TransactionDetailsModal = ({ isOpen, onClose, transaction }) => {
       onClick={onClose}
     >
       <div
-        className="bg-[#121212] border border-[#333] rounded-2xl w-full max-w-4xl shadow-2xl relative animate-in zoom-in-95 duration-200 flex flex-col my-auto"
+        className="bg-surface border border-border rounded-2xl w-full max-w-4xl shadow-2xl relative animate-in zoom-in-95 duration-200 flex flex-col my-auto"
         onClick={(e) => e.stopPropagation()}
       >
         {/* --- Header --- */}
-        <div className="bg-[#1a1a1a] p-4 border-b border-[#333] flex justify-between items-center shrink-0 rounded-t-2xl relative z-20">
+        <div className="bg-surface-active p-4 border-b border-border flex justify-between items-center shrink-0 rounded-t-2xl relative z-20">
           <div className="flex items-center gap-3">
-            <div className="bg-[#222] p-2 rounded-lg border border-[#333]">
-              <Receipt size={20} className="text-[#b6ff00]" />
+            <div className="bg-surface-hover p-2 rounded-lg border border-border">
+              <Receipt size={20} className="text-primary" />
             </div>
             <div>
-              <h3 className="text-white font-bold text-lg">پسوڵەی فرۆشتن</h3>
-              <span className="text-[10px] text-gray-500 font-mono tracking-wider">
+              <h3 className="text-text-main font-bold text-lg">پسوڵەی فرۆشتن</h3>
+              <span className="text-[10px] text-text-muted font-mono tracking-wider">
                 ID: #{transaction.id}
               </span>
             </div>
           </div>
           <button
             onClick={onClose}
-            className="bg-[#222] p-2 rounded-full hover:bg-[#333] text-gray-400 hover:text-white transition-colors"
+            className="bg-surface-hover p-2 rounded-full hover:bg-surface-active/80 text-text-muted hover:text-text-main transition-colors"
           >
             <X size={18} />
           </button>
@@ -112,26 +112,26 @@ const TransactionDetailsModal = ({ isOpen, onClose, transaction }) => {
             {/* === LEFT COLUMN (Money & Note) === */}
             <div className="flex-1 flex flex-col gap-3 order-2 lg:order-1">
               {/* Payment Summary Box */}
-              <div className="bg-[#1a1a1a] border border-[#333] rounded-xl overflow-hidden">
+              <div className="bg-surface-active border border-border rounded-xl overflow-hidden">
                 {/* Total */}
-                <div className="flex justify-between items-center p-3 bg-[#b6ff00]/5 border-b border-[#333]">
-                  <span className="text-gray-300 font-bold text-sm">
+                <div className="flex justify-between items-center p-3 bg-primary/5 border-b border-border">
+                  <span className="text-text-muted font-bold text-sm">
                     کۆی گشتی
                   </span>
-                  <span className="text-lg font-black text-white font-mono tracking-tight">
+                  <span className="text-lg font-black text-text-main font-mono tracking-tight">
                     {totalAmount.toLocaleString()}{" "}
-                    <span className="text-xs text-[#b6ff00] font-bold">
+                    <span className="text-xs text-primary font-bold">
                       IQD
                     </span>
                   </span>
                 </div>
 
                 {/* Paid */}
-                <div className="flex justify-between items-center p-3 text-sm border-b border-[#2a2a2a]">
-                  <span className="text-gray-400">بڕی دراو</span>
+                <div className="flex justify-between items-center p-3 text-sm border-b border-border">
+                  <span className="text-text-muted">بڕی دراو</span>
                   <span
                     className={`font-mono font-bold ${
-                      paidAmount > 0 ? "text-emerald-400" : "text-gray-500"
+                      paidAmount > 0 ? "text-emerald-400" : "text-text-muted"
                     }`}
                   >
                     {paidAmount.toLocaleString()} IQD
@@ -159,17 +159,17 @@ const TransactionDetailsModal = ({ isOpen, onClose, transaction }) => {
               </div>
 
               {/* Note Section (COMPACT VERSION) */}
-              <div className="bg-[#222] p-3 rounded-xl border border-[#333] relative min-h-[80px]">
-                <div className="absolute -top-2.5 right-4 bg-[#1a1a1a] px-2 py-0.5 text-[10px] text-gray-500 border border-[#333] rounded flex items-center gap-1">
+              <div className="bg-surface-hover p-3 rounded-xl border border-border relative min-h-[80px]">
+                <div className="absolute -top-2.5 right-4 bg-surface-active px-2 py-0.5 text-[10px] text-text-muted border border-border rounded flex items-center gap-1">
                   <StickyNote size={10} /> تێبینی (Note)
                 </div>
                 <div className="mt-2">
                   {transaction.note ? (
-                    <p className="text-gray-300 text-sm leading-relaxed break-words whitespace-pre-wrap text-start">
+                    <p className="text-text-main text-sm leading-relaxed break-words whitespace-pre-wrap text-start">
                       {transaction.note}
                     </p>
                   ) : (
-                    <div className="flex items-center justify-center text-gray-600 text-xs italic py-2">
+                    <div className="flex items-center justify-center text-text-muted text-xs italic py-2">
                       هیچ تێبینییەک نییە
                     </div>
                   )}
@@ -180,15 +180,15 @@ const TransactionDetailsModal = ({ isOpen, onClose, transaction }) => {
             {/* === RIGHT COLUMN (Details) === */}
             <div className="flex-1 flex flex-col gap-3 order-1 lg:order-2">
               {/* Customer Profile */}
-              <div className="text-center bg-[#1a1a1a] p-4 rounded-xl border border-[#222]">
-                <div className="w-16 h-16 bg-gradient-to-b from-[#222] to-[#111] rounded-full flex items-center justify-center mx-auto mb-3 border border-[#333] shadow-inner">
-                  <User size={32} className="text-gray-300" />
+              <div className="text-center bg-surface-active p-4 rounded-xl border border-border">
+                <div className="w-16 h-16 bg-gradient-to-b from-surface-hover to-surface-active rounded-full flex items-center justify-center mx-auto mb-3 border border-border shadow-inner">
+                  <User size={32} className="text-text-muted" />
                 </div>
-                <h2 className="text-xl font-bold text-white mb-1">
+                <h2 className="text-xl font-bold text-text-main mb-1">
                   {transaction.customer}
                 </h2>
-                <div className="flex items-center justify-center gap-2 text-xs text-gray-500">
-                  <span className="flex items-center gap-1 bg-[#151515] px-2 py-1 rounded border border-[#2a2a2a]">
+                <div className="flex items-center justify-center gap-2 text-xs text-text-muted">
+                  <span className="flex items-center gap-1 bg-surface px-2 py-1 rounded border border-border">
                     <Calendar size={12} /> {transaction.date}
                   </span>
                 </div>
@@ -196,37 +196,37 @@ const TransactionDetailsModal = ({ isOpen, onClose, transaction }) => {
 
               {/* Info Grid */}
               <div className="grid grid-cols-2 gap-3">
-                <div className="bg-[#1a1a1a] p-3 rounded-xl border border-[#2a2a2a] flex flex-col items-center justify-center text-center">
-                  <span className="text-gray-500 text-[10px] mb-1 flex items-center gap-1">
+                <div className="bg-surface-active p-3 rounded-xl border border-border flex flex-col items-center justify-center text-center">
+                  <span className="text-text-muted text-[10px] mb-1 flex items-center gap-1">
                     <Droplet size={10} /> سووتەمەنی
                   </span>
-                  <div className="font-bold text-white text-sm">
+                  <div className="font-bold text-text-main text-sm">
                     {transaction.fuel}
-                    <span className="text-gray-500 text-[10px] block">
+                    <span className="text-text-muted text-[10px] block">
                       ({transaction.brand})
                     </span>
                   </div>
                 </div>
 
-                <div className="bg-[#1a1a1a] p-3 rounded-xl border border-[#2a2a2a] flex flex-col items-center justify-center text-center">
-                  <span className="text-gray-500 text-[10px] mb-1 flex items-center gap-1">
+                <div className="bg-surface-active p-3 rounded-xl border border-border flex flex-col items-center justify-center text-center">
+                  <span className="text-text-muted text-[10px] mb-1 flex items-center gap-1">
                     <Tag size={10} /> بڕ
                   </span>
-                  <div className="font-bold text-white text-sm font-mono">
+                  <div className="font-bold text-text-main text-sm font-mono">
                     {Number(transaction.qty).toLocaleString()}{" "}
-                    <span className="text-[#b6ff00] text-[10px]">
+                    <span className="text-primary text-[10px]">
                       {transaction.unit}
                     </span>
                   </div>
                 </div>
 
-                <div className="col-span-2 bg-[#1a1a1a] p-3 rounded-xl border border-[#2a2a2a] flex flex-col items-center justify-center text-center">
-                  <span className="text-gray-500 text-[10px] mb-1 flex items-center gap-1">
+                <div className="col-span-2 bg-surface-active p-3 rounded-xl border border-border flex flex-col items-center justify-center text-center">
+                  <span className="text-text-muted text-[10px] mb-1 flex items-center gap-1">
                     <Coins size={10} /> نرخی یەکە
                   </span>
-                  <div className="font-bold text-white text-base font-mono">
+                  <div className="font-bold text-text-main text-base font-mono">
                     {Number(unitPrice).toLocaleString()}{" "}
-                    <span className="text-gray-500 text-xs">IQD</span>
+                    <span className="text-text-muted text-xs">IQD</span>
                   </div>
                 </div>
               </div>

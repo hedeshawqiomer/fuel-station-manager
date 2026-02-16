@@ -94,7 +94,7 @@ export default function Delivered() {
     <div className="p-6">
       <div className="flex flex-col xl:flex-row justify-between items-start xl:items-center mb-6 gap-4">
         <div>
-          <h4 className="text-xl font-bold flex items-center gap-2 text-white">
+          <h4 className="text-xl font-bold flex items-center gap-2 text-text-main">
             <Grid className="text-primary" /> تۆماری فرۆشتن
           </h4>
           <span className="text-text-muted text-sm mt-1 block">
@@ -112,26 +112,26 @@ export default function Delivered() {
           <div className="flex items-center gap-2 px-2 text-text-muted">
             <Filter
               size={16}
-              className={hasDateFilter ? "text-primary" : "text-gray-500"}
+              className={hasDateFilter ? "text-primary" : "text-text-muted"}
             />
             <span className="text-xs font-bold hidden sm:inline">فیلتەر</span>
           </div>
           <div className="flex items-center gap-2 bg-surface border border-border rounded-lg px-3 py-1.5">
-            <span className="text-[10px] text-gray-500 font-bold">لە</span>
+            <span className="text-[10px] text-text-muted font-bold">لە</span>
             <input
               type="date"
               value={startDate}
               onChange={(e) => setStartDate(e.target.value)}
-              className="bg-transparent text-white text-xs border-none p-0 h-auto focus:ring-0"
+              className="bg-transparent text-text-main text-xs border-none p-0 h-auto focus:ring-0"
             />
           </div>
           <div className="flex items-center gap-2 bg-surface border border-border rounded-lg px-3 py-1.5">
-            <span className="text-[10px] text-gray-500 font-bold">تا</span>
+            <span className="text-[10px] text-text-muted font-bold">تا</span>
             <input
               type="date"
               value={endDate}
               onChange={(e) => setEndDate(e.target.value)}
-              className="bg-transparent text-white text-xs border-none p-0 h-auto focus:ring-0"
+              className="bg-transparent text-text-main text-xs border-none p-0 h-auto focus:ring-0"
             />
           </div>
           {hasDateFilter && (
@@ -186,14 +186,14 @@ export default function Delivered() {
           size={32}
           className="text-primary mb-2 group-hover:scale-110 transition-transform"
         />
-        <h6 className="font-bold text-white">زیادکردنی فرۆشتنێکی نوێ</h6>
+        <h6 className="font-bold text-text-main">زیادکردنی فرۆشتنێکی نوێ</h6>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
         {filtered.length === 0 ? (
           <div className="col-span-full border-2 border-dashed border-border rounded-xl p-12 text-center text-text-muted bg-surface-hover/50 flex flex-col items-center">
-            <SearchX size={48} className="text-gray-600 mb-3 opacity-50" />
-            <h5 className="font-bold text-gray-400">
+            <SearchX size={48} className="text-text-muted mb-3 opacity-50" />
+            <h5 className="font-bold text-text-muted">
               هیچ فرۆشتنێک نەدۆزرایەوە!
             </h5>
           </div>
@@ -226,7 +226,7 @@ export default function Delivered() {
                 <div className="p-4 border-b border-border flex justify-between items-center bg-surface-hover">
                   <div className="flex items-center gap-2">
                     <User size={18} className="text-purple-400" />
-                    <span className="text-white font-bold">{t.customer}</span>
+                    <span className="text-text-main font-bold">{t.customer}</span>
                   </div>
                   <div
                     className={`px-2 py-0.5 rounded border text-[10px] font-bold ${badgeClass}`}
@@ -234,12 +234,12 @@ export default function Delivered() {
                     {badgeText}
                   </div>
                 </div>
-                <div className="p-4 space-y-2 text-sm text-gray-300">
+                <div className="p-4 space-y-2 text-sm text-text-muted">
                   <div className="flex justify-between">
                     <span className="bg-primary/10 text-primary border border-primary/20 px-2 py-0.5 rounded text-[10px] font-bold">
                       {t.fuel}
                     </span>
-                    <span className="text-white">
+                    <span className="text-text-main">
                       {t.qty} {t.unit}
                     </span>
                   </div>
@@ -251,7 +251,7 @@ export default function Delivered() {
                   </div>
                 </div>
                 <div className="p-3 bg-surface border-t border-border flex justify-between items-center">
-                  <span className="text-gray-500 text-xs flex items-center gap-1">
+                  <span className="text-text-muted text-xs flex items-center gap-1">
                     <Calendar size={12} /> {t.date}
                   </span>
                   <button
@@ -298,6 +298,6 @@ const SummaryStat = ({ label, value, sub, icon, isWarning }) => (
     <div className="text-text-muted text-xs flex justify-center items-center gap-1">
       {icon} {label}
     </div>
-    <div className="text-[10px] text-gray-500 mt-1">{sub}</div>
+    <div className="text-[10px] text-text-muted mt-1">{sub}</div>
   </div>
 );

@@ -7,29 +7,57 @@
 /* --- 1. DEFINE YOUR THEME COLORS HERE --- */
 @layer base {
   :root {
-    --background: 10 10 10; /* #0a0a0a */
-    --surface: 21 21 21; /* #151515 */
-    --surface-hover: 26 26 26; /* #1a1a1a */
-    --border: 38 38 38; /* #262626 */
-    --primary: 182 255 0; /* #b6ff00 (Neon Green) */
-    --text-main: 255 255 255;
-    --text-muted: 156 163 175;
+    /* LIGHT MODE (High Contrast) */
+    --background: 220 15% 90%;     /* #E2E4E8 - Visible Gray Background */
+    --surface: 0 0% 100%;          /* #ffffff - Pure White Cards */
+    --surface-hover: 220 15% 96%;  /* #F1F3F5 */
+    --surface-active: 220 15% 88%; /* #DDE0E4 */
+    --border: 220 13% 82%;         /* #CFD3D8 - Stronger borders */
+    --border-light: 220 15% 92%;   /* #EBEDF0 */
+    --primary: 142 76% 36%;        /* #16a34a - Green-600 */
+    --primary-hover: 142 76% 29%;
+    --text-main: 0 0% 0%;          /* #000000 - Pure Black */
+    --text-muted: 0 0% 0%;         /* #000000 - Pure Black (No Gray per user request) */
+    --text-inverse: 0 0% 100%;     /* #ffffff */
+  }
+
+  .dark {
+    /* DARK MODE */
+    --background: 0 0% 0%;         /* #000000 */
+    --surface: 0 0% 9%;            /* #151515 */
+    --surface-hover: 0 0% 12%;     /* #1e1e1e */
+    --surface-active: 0 0% 15%;    /* #262626 */
+    --border: 0 0% 20%;            /* #333333 */
+    --border-light: 0 0% 27%;      /* #444444 */
+    --primary: 84 100% 50%;        /* #b6ff00 - Keeping Neon for Dark Mode */
+    --primary-hover: 84 100% 45%;  /* #a3e600 */
+    --text-main: 0 0% 100%;        /* #ffffff */
+    --text-muted: 215 16% 65%;     /* #9ca3af */
+    --text-inverse: 0 0% 0%;       /* #000000 */
   }
 
   body {
-    background-color: rgb(var(--background));
-    color: rgb(var(--text-main));
+    background-color: hsl(var(--background));
+    /* Add a subtle top-right green glow in Light Mode only */
+    background-image: radial-gradient(circle at 100% 0%, hsla(var(--primary), 0.15) 0%, transparent 40%);
+    background-attachment: fixed; /* Keeps the gradient in place */
+    color: hsl(var(--text-main));
     font-family: "Vazirmatn", sans-serif;
     @apply antialiased overflow-hidden;
+  }
+  
+  /* Remove gradient in dark mode */
+  .dark body {
+    background-image: none;
   }
 
   /* Global Input Style */
   input,
   select,
   textarea {
-    @apply w-full bg-[#1a1a1a] border border-[#262626] rounded-xl text-white outline-none 
-    focus:border-[#b6ff00] focus:ring-1 focus:ring-[#b6ff00]/20 
-    transition-all duration-200 placeholder:text-gray-600;
+    @apply w-full bg-surface border border-border rounded-xl text-text-main outline-none 
+    focus:border-primary focus:ring-1 focus:ring-primary/20 
+    transition-all duration-200 placeholder:text-text-muted;
   }
 }
 
@@ -40,30 +68,30 @@
     height: 6px;
   }
   .custom-scrollbar::-webkit-scrollbar-track {
-    background-color: rgb(var(--surface));
+    background-color: transparent;
   }
   .custom-scrollbar::-webkit-scrollbar-thumb {
-    background-color: #333;
+    background-color: hsl(var(--border));
     border-radius: 9999px;
   }
   .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-    background-color: rgb(var(--primary));
+    background-color: hsl(var(--primary));
   }
 
   /* Standard Card */
   .card-base {
-    @apply bg-[#151515] border border-[#262626] rounded-2xl overflow-hidden;
+    @apply bg-surface border border-border rounded-2xl overflow-hidden;
   }
 
   /* Standard Buttons */
   .btn-primary {
-    @apply bg-[#b6ff00] text-black font-bold rounded-xl hover:bg-[#a3e600] 
+    @apply bg-primary text-black font-bold rounded-xl hover:bg-primary-hover 
     shadow-[0_0_15px_rgba(182,255,0,0.2)] hover:shadow-[0_0_20px_rgba(182,255,0,0.4)] 
     transition-all flex items-center justify-center gap-2;
   }
 
   .btn-secondary {
-    @apply bg-[#1a1a1a] text-white border border-[#262626] hover:bg-[#222] 
+    @apply bg-surface text-text-main border border-border hover:bg-surface-hover 
     rounded-xl transition-all flex items-center justify-center gap-2;
   }
 

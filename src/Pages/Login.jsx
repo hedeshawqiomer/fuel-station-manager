@@ -40,7 +40,7 @@ export default function Login() {
             <div className="w-16 h-16 bg-surface-hover rounded-full flex items-center justify-center mx-auto mb-4 border border-border text-primary shadow-lg shadow-primary/5">
               <User size={32} />
             </div>
-            <h1 className="text-2xl font-black text-white tracking-tight">
+            <h1 className="text-2xl font-black text-text-main tracking-tight">
               بەخێربێیتەوە
             </h1>
             <p className="text-text-muted text-xs font-medium">
@@ -63,14 +63,14 @@ export default function Login() {
               </label>
               <div className="relative group">
                 <User
-                  className="absolute top-3.5 right-3 text-gray-500 group-focus-within:text-primary transition-colors pointer-events-none"
+                  className="absolute top-3.5 right-3 text-text-muted group-focus-within:text-primary transition-colors pointer-events-none"
                   size={18}
                 />
                 <input
                   type="text"
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
-                  className="w-full py-3 pr-10 pl-4 bg-surface border border-border rounded-lg text-white focus:border-primary focus:ring-1 focus:ring-primary/20 outline-none transition-all placeholder:text-gray-600"
+                  className="w-full py-3 pr-10 pl-4 bg-surface border border-border rounded-lg text-text-main focus:border-primary focus:ring-1 focus:ring-primary/20 outline-none transition-all placeholder:text-text-muted"
                   placeholder="admin"
                   autoFocus
                   dir="ltr"
@@ -84,14 +84,14 @@ export default function Login() {
               </label>
               <div className="relative group">
                 <Lock
-                  className="absolute top-3.5 right-3 text-gray-500 group-focus-within:text-primary transition-colors pointer-events-none"
+                  className="absolute top-3.5 right-3 text-text-muted group-focus-within:text-primary transition-colors pointer-events-none"
                   size={18}
                 />
                 <input
                   type="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="w-full py-3 pr-10 pl-4 bg-surface border border-border rounded-lg text-white focus:border-primary focus:ring-1 focus:ring-primary/20 outline-none transition-all placeholder:text-gray-600 font-sans"
+                  className="w-full py-3 pr-10 pl-4 bg-surface border border-border rounded-lg text-text-main focus:border-primary focus:ring-1 focus:ring-primary/20 outline-none transition-all placeholder:text-text-muted font-sans"
                   placeholder="••••••••"
                   dir="ltr"
                 />
