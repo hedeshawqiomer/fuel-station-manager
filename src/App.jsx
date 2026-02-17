@@ -45,7 +45,6 @@ export default function App() {
   // --- 🔌 LOAD DATA FROM DATABASE ---
   useEffect(() => {
     const loadDB = async () => {
-    const loadDB = async () => {
       if (window.api) {
         try {
           // 1. Get ALL data from the JSON file

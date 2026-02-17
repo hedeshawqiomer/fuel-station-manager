@@ -42,7 +42,7 @@ export default function Delivered() {
 
   // Trigger print cleanly when state changes and component is ready
   useEffect(() => {
-  useEffect(() => {
+
     if (printTx) {
       // Small timeout to ensure DOM is painted
       setTimeout(() => {
